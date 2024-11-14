@@ -19,7 +19,7 @@ public class Language {
     @Column(name = "type")
     private Integer type;
 
-    @Column(name = "grage")
+    @Column(name = "grade")
     private Integer grade;
 
     @ManyToOne
