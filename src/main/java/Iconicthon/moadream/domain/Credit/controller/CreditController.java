@@ -1,12 +1,13 @@
 package Iconicthon.moadream.domain.Credit.controller;
 
+import Iconicthon.moadream.domain.Credit.dto.request.LectureRequest;
+import Iconicthon.moadream.domain.Credit.dto.request.ScheduleRequest;
 import Iconicthon.moadream.domain.Credit.dto.response.CreditResponse;
+import Iconicthon.moadream.domain.Credit.dto.response.TermCreditResponse;
 import Iconicthon.moadream.domain.Credit.service.CreditService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.service.annotation.PatchExchange;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +20,20 @@ public class CreditController {
         return creditService.getCredits(userId);
     }
 
+    @PostMapping("/postSchedule")
+    public void postSchedule(@RequestBody ScheduleRequest request) {
+        creditService.postSchedule(request);
+    }
+
+    @PostMapping("/postLecture")
+    public void postLecture(@RequestBody LectureRequest request) {
+        creditService.postLecture(request);
+    }
+
+    @GetMapping("/{scheduleId}/getTermCredit")
+    public TermCreditResponse getTermCredit(@PathVariable Long scheduleId) {
+        return creditService.getTermCredit(scheduleId);
+    }
 
 
 }

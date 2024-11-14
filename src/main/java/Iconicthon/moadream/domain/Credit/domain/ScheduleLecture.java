@@ -25,4 +25,9 @@ public class ScheduleLecture {
     @ManyToOne
     @JoinColumn(name = "lecture_id")
     private Lecture lecture;
+
+    public ScheduleLecture(Schedule schedule, Lecture lecture){
+        this.schedule = schedule;
+        this.lecture = lecture;
+    }
 }

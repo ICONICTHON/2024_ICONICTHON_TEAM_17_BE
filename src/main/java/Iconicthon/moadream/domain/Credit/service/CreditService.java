@@ -3,7 +3,10 @@ package Iconicthon.moadream.domain.Credit.service;
 import Iconicthon.moadream.domain.Credit.domain.Lecture;
 import Iconicthon.moadream.domain.Credit.domain.Schedule;
 import Iconicthon.moadream.domain.Credit.domain.ScheduleLecture;
+import Iconicthon.moadream.domain.Credit.dto.request.LectureRequest;
+import Iconicthon.moadream.domain.Credit.dto.request.ScheduleRequest;
 import Iconicthon.moadream.domain.Credit.dto.response.CreditResponse;
+import Iconicthon.moadream.domain.Credit.dto.response.TermCreditResponse;
 import Iconicthon.moadream.domain.Credit.repository.LectureRepository;
 import Iconicthon.moadream.domain.Credit.repository.ScheduleLectureRepository;
 import Iconicthon.moadream.domain.Credit.repository.ScheduleRepository;
@@ -69,4 +72,34 @@ public class CreditService {
                 .build();
         return creditResponse;
     }
+
+    public void postSchedule(ScheduleRequest request){
+        User user = userRepository.findById(request.userId()).orElseThrow(IllegalAccessError::new);
+        scheduleRepository.save(new Schedule(request.name(), user));
+    }
+
+    public void postLecture (LectureRequest request){
+        Schedule schedule = scheduleRepository.findById(request.scheduleId()).orElseThrow(IllegalAccessError::new);
+        Lecture lecture = lectureRepository.findById(request.lectureId()).orElseThrow(IllegalAccessError::new);
+
+        scheduleLectureRepository.save(new ScheduleLecture(schedule, lecture));
+    }
+
+    public TermCreditResponse getTermCredit(Long scheduleId){
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow();
+        List<ScheduleLecture> scheduleLectures = scheduleLectureRepository.findBySchedule(schedule).orElseThrow(IllegalAccessError::new);
+
+        TermCreditResponse termCreditResponse = TermCreditResponse
+                .builder()
+                .termCredit(
+                        scheduleLectures.stream()
+                        .map(ScheduleLecture::getLecture) // ScheduleLecture에서 Lecture 가져오기
+                        .map(Lecture::getCredit) // Lecture의 credit 값 가져오기
+                        .reduce(0, Integer::sum)
+                )
+                .build();
+
+        return termCreditResponse;
+    }
+
 }
