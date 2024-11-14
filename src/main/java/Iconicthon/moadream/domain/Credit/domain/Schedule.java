@@ -35,4 +35,9 @@ public class Schedule {
 
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<ScheduleLecture> scheduleLectures = new ArrayList<>();
+
+    public Schedule(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
 }
