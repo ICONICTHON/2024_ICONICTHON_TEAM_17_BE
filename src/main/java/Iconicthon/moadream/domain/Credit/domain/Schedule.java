@@ -1,4 +1,4 @@
-package Iconicthon.moadream.domain.schedule.domain;
+package Iconicthon.moadream.domain.Credit.domain;
 
 import Iconicthon.moadream.domain.Credit.domain.ScheduleLecture;
 import Iconicthon.moadream.domain.user.domain.User;
@@ -23,11 +23,8 @@ public class Schedule {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "term")
-    private Integer term;
-
     @Column(name = "term_credit")
-    private Long termCredit;
+    private Integer termCredit;
 
     @Column(name = "term_grade")
     private Float termGrade;

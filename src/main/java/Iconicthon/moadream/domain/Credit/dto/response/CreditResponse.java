@@ -6,18 +6,24 @@ import lombok.Builder;
 @Builder
 public record CreditResponse (
         @JsonProperty("common_liberal")
-        Long commonLiberal,
+        Integer commonLiberal,
 
         @JsonProperty("basic_liberal")
-        Long basicLiberal,
+        Integer basicLiberal,
 
         @JsonProperty("major_common")
-        Long majorCommon,
+        Integer majorCommon,
 
         @JsonProperty("major_required")
-        Long majorRequired,
+        Integer majorRequired,
 
         @JsonProperty("bsm")
-        Long bsm
+        Integer bsm,
+
+        @JsonProperty("average_grade")
+        Integer averageGrade,
+
+        @JsonProperty("english_count")
+        long englishCount
 )
 {}
