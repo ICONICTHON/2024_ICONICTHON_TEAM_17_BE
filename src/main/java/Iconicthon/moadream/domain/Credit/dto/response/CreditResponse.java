@@ -21,7 +21,7 @@ public record CreditResponse (
         Integer bsm,
 
         @JsonProperty("average_grade")
-        Integer averageGrade,
+        Float averageGrade,
 
         @JsonProperty("english_count")
         long englishCount
