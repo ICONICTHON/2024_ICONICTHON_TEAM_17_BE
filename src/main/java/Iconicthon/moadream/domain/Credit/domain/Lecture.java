@@ -1,16 +1,18 @@
-package Iconicthon.moadream.domain.lecture.domain;
+package Iconicthon.moadream.domain.Credit.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@Table(name = "liberal_art")
-public class LiberalArt {
+@Table(name = "lecture")
+public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -37,12 +39,15 @@ public class LiberalArt {
     @Column(name = "credit")
     private Integer credit;
 
-    @Column(name = "grade")
-    private Float grade;
-
     @Column(name = "type")
     private Integer type;
 
     @Column(name = "english")
     private Boolean english;
+
+    @Column(name = "pre_id")
+    private Long preId;
+
+    @OneToMany(mappedBy = "lecture", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<ScheduleLecture> scheduleLectures = new ArrayList<>();
 }
