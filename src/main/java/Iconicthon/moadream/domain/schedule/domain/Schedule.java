@@ -1,6 +1,6 @@
 package Iconicthon.moadream.domain.schedule.domain;
 
-import Iconicthon.moadream.domain.lecture.domain.Major;
+import Iconicthon.moadream.domain.Credit.domain.ScheduleLecture;
 import Iconicthon.moadream.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -30,15 +30,12 @@ public class Schedule {
     private Long termCredit;
 
     @Column(name = "term_grade")
-    private Float ermGrade;
+    private Float termGrade;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<Major> majors = new ArrayList<>();
-
-    @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<Major> liberalArts = new ArrayList<>();
+    private List<ScheduleLecture> scheduleLectures = new ArrayList<>();
 }

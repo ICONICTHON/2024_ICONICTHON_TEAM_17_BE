@@ -1,4 +1,4 @@
-package Iconicthon.moadream.domain.language.domain;
+package Iconicthon.moadream.domain.Credit.domain;
 
 import Iconicthon.moadream.domain.user.domain.User;
 import jakarta.persistence.*;

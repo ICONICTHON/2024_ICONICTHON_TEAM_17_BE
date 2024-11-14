@@ -1,8 +1,7 @@
 package Iconicthon.moadream.domain.user.domain;
 
 
-import Iconicthon.moadream.domain.language.domain.Language;
-import Iconicthon.moadream.domain.lecture.domain.Major;
+import Iconicthon.moadream.domain.Credit.domain.Language;
 import Iconicthon.moadream.domain.schedule.domain.Schedule;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
