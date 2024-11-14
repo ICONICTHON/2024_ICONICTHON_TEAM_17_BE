@@ -1,6 +1,5 @@
 package Iconicthon.moadream.domain.Credit.domain;
 
-import Iconicthon.moadream.domain.schedule.domain.Schedule;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

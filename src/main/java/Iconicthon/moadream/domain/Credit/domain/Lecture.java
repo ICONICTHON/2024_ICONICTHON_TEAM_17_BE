@@ -39,6 +39,9 @@ public class Lecture {
     @Column(name = "credit")
     private Integer credit;
 
+    @Column(name="major")
+    private Boolean major;
+
     @Column(name = "type")
     private Integer type;
 
@@ -46,7 +49,7 @@ public class Lecture {
     private Boolean english;
 
     @Column(name = "pre_id")
-    private Long preId;
+    private String preId;
 
     @OneToMany(mappedBy = "lecture", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<ScheduleLecture> scheduleLectures = new ArrayList<>();

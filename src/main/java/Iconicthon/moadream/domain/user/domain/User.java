@@ -2,7 +2,7 @@ package Iconicthon.moadream.domain.user.domain;
 
 
 import Iconicthon.moadream.domain.Credit.domain.Language;
-import Iconicthon.moadream.domain.schedule.domain.Schedule;
+import Iconicthon.moadream.domain.Credit.domain.Schedule;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
